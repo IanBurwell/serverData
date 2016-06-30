@@ -5,19 +5,22 @@ import java.net.*;
 
 public class client {
 	Socket s;
-	public client(String ip, int port) {
+	public client() {
 		System.out.println("Client init");
 
-		try {
-			s = new Socket(ip, port);
-			System.out.println("Connected");
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-			System.out.println("Unknown Host");
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("IOExeption error");
-		}
-
 	}
+	
+	public void init(String ip, int port){
+	    try {
+		s = new Socket(ip, port);
+		System.out.println("Connected");
+	    } catch (UnknownHostException e) {
+		e.printStackTrace();
+		System.out.println("Unknown Host");
+	    } catch (IOException e) {
+		e.printStackTrace();
+		System.out.println("IOExeption error");
+	}
+    }
+
 }
