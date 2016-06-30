@@ -1,5 +1,6 @@
 package serverData.main;
 
+
 import java.util.Scanner;
 
 
@@ -9,8 +10,8 @@ public class mainClass {
 	Scanner input = new Scanner(System.in);
 	
 	public mainClass() {//Runs when class called
-		//System.out.println("Input ip: ");
-		//ip = input.nextInt();
+		System.out.println("Input ip: ");
+		ip = input.nextLine();
 		System.out.println("Input port: ");
 		port = input.nextInt();
 		input.nextLine();
@@ -20,10 +21,13 @@ public class mainClass {
 
 		if(choice.equals("s")){
 			System.out.println("Server opening...");
-			new server(port);
+			server myServer = new server();
+			myServer.init(port);
 		} else if(choice.equals("c")){
 			System.out.println("Client opening...");
-			new client(ip, port);
+			client myClient = new client();
+			System.out.println("client being initialized");
+			myClient.init(ip,port);
 		}
 	}
 }

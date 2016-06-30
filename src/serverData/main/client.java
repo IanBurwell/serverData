@@ -5,14 +5,17 @@ import java.net.*;
 
 public class client {
 	Socket s;
-	public client(String ip, int port) {
+	public client() {
 		System.out.println("Client init");
+	}
 
+	public void init(String ip, int port){
 		try {
 			s = new Socket(ip, port);
 			System.out.println("Connected");
 			Game ex = new Game();
 			ex.setVisible(true);
+			System.out.println("working");
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 			System.out.println("Unknown Host");
@@ -20,6 +23,6 @@ public class client {
 			e.printStackTrace();
 			System.out.println("IOExeption error");
 		}
-
 	}
+
 }
