@@ -1,4 +1,4 @@
-package serverData.main;
+package serverData.GUI;
 
 public class Coordinates {
 	private int xPos;

@@ -1,4 +1,4 @@
-package serverData.main;
+package serverData.resources;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

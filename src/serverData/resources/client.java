@@ -1,8 +1,9 @@
-package serverData.main;
+package serverData.resources;
 
 import java.io.*;
 import java.io.IOException;
 import java.net.*;
+import serverData.GUI.*;
 
 public class client {
     Socket s;
@@ -23,8 +24,8 @@ public class client {
 	    dis = new DataInputStream(s.getInputStream());
 	    System.out.println("Data Streams created");
 	    
-	    Game ex = new Game();
-	    ex.setVisible(true);
+	    //Game ex = new Game();
+	    //ex.setVisible(true);
 
 	} catch (UnknownHostException e) {
 	    e.printStackTrace();

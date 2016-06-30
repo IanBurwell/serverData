@@ -1,4 +1,4 @@
-package serverData.main;
+package serverData.GUI;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
