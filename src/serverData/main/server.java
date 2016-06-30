@@ -8,7 +8,7 @@ public class server {
 	Socket s;
 	public server(int port) {
 		System.out.println("Server init");
-
+		
 		try {
 			server = new ServerSocket(port);// may not be port just an id number
 			s = server.accept();

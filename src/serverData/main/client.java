@@ -11,6 +11,8 @@ public class client {
 		try {
 			s = new Socket(ip, port);
 			System.out.println("Connected");
+			Game ex = new Game();
+			ex.setVisible(true);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 			System.out.println("Unknown Host");
