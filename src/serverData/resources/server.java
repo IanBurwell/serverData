@@ -1,51 +1,64 @@
 package serverData.resources;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.*;
 
+
 public class server {
-    DataInputStream dis;
-    DataOutputStream dos;
-    ServerSocket server;
-    Socket s;
+	ObjectOutputStream out;
+	ObjectInputStream in;
+	ServerSocket server;
+	Socket s;
 
-    public server() {
-	System.out.println("Server init");
+	public server() {
+		System.out.println("Server init");
 
-    }
-
-    public void init(int port) {
-	try {
-	    server = new ServerSocket(port);// may not be port just an id number
-	    s = server.accept();
-
-	    dos = new DataOutputStream(s.getOutputStream());
-	    dis = new DataInputStream(s.getInputStream());
-	    System.out.println("Data Streams created");
-
-	    System.out.println("Connected");
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    System.out.println("IOExeption error---");
 	}
-    }
 
-    public void sendString(String output) {
-	try {
-	    dos.writeUTF(output);
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
-    }
+	public void init(int port) {
+		try {
+			server = new ServerSocket(port);// may not be port just an id number
+			s = server.accept();
 
-    public String readString(){
-	try {
-	    return dis.readUTF();
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    return "IOException";
+			out = new ObjectOutputStream(s.getOutputStream());
+			out.flush();
+			in = new ObjectInputStream(s.getInputStream());
+			System.out.println("Object Streams created");
+
+			System.out.println("Connected");
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("IOExeption error---");
+		}
 	}
-    }
+
+	public void sendString(String msg) {
+		try {
+			out.writeObject(msg);
+			out.flush();
+			System.out.println("Server> " + msg);
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+	}
+
+	public String readString() throws IOException {
+		try {
+			return (String) in.readObject();
+		} catch (ClassNotFoundException classnot) {
+			System.err.println("Data received in unknown format");
+			return "Error";
+		} 
+
+	}
+
+	public void close() {
+		try {
+			in.close();
+			out.close();
+			s.close();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+	}
 }
