@@ -37,7 +37,7 @@ public class Board extends JPanel implements ActionListener {
 	int dx = 0, dy = 0;
 	int screen = 3;
 	Action a = new PlayAgain(this), r = new Rules(this), m = new Menu(this);
-	JButton playAgain = new JButton(a), rules = new JButton(r), play = new JButton(a), mainMenu = new JButton(m);
+	JButton playAgain = new JButton(a), rules = new JButton(r), joinGame = new JButton(a), mainMenu = new JButton(m);
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -77,9 +77,9 @@ public class Board extends JPanel implements ActionListener {
 		rules.setVisible(false);
 		this.add(rules);
 		
-		play.setText("Play");
-		play.setVisible(false);
-		this.add(play);
+		joinGame.setText("Join Game");
+		joinGame.setVisible(false);
+		this.add(joinGame);
 		
 		mainMenu.setText("Main Menu");
 		mainMenu.setVisible(false);
@@ -120,7 +120,7 @@ public class Board extends JPanel implements ActionListener {
 			
 			playAgain.setVisible(false);
 			rules.setVisible(false);
-			play.setVisible(false);
+			joinGame.setVisible(false);
 			mainMenu.setVisible(false);
 			
 			//Stars
@@ -181,7 +181,7 @@ public class Board extends JPanel implements ActionListener {
 		} else if (screen == 1) {		//winning screen
 			
 			rules.setVisible(false);
-			play.setVisible(false);
+			joinGame.setVisible(false);
 			
 			setBackground(Color.GREEN);
 			g2d.setFont(new Font("Dialog", Font.PLAIN, 50));
@@ -193,7 +193,7 @@ public class Board extends JPanel implements ActionListener {
 			mainMenu.setVisible(true);
 		} else if (screen == 2) {		//losing screen
 			
-			play.setVisible(false);
+			joinGame.setVisible(false);
 			rules.setVisible(false);
 			
 			setBackground(Color.RED);
@@ -209,21 +209,18 @@ public class Board extends JPanel implements ActionListener {
 			playAgain.setVisible(false);
 			mainMenu.setVisible(false);
 			
-			setBackground(Color.BLACK);
-			g2d.setColor(Color.WHITE);
-			for(Coordinates temp : stars)
-				g2d.fillOval(temp.getX() - llamaCoords.getX(), temp.getY() - llamaCoords.getY(), 5, 5);
+			setBackground(Color.MAGENTA);
 			
 			g2d.setFont(new Font("Dialog", Font.PLAIN, 50));
-			g2d.drawString("Space Llama", getCenterPos("Space Llama", g), 300);
+			g2d.drawString("This is a Client", getCenterPos("This is a Client", g), 300);
 			
-			rules.setBounds(280, 400, 100, 100);
-			rules.setVisible(true);
-			play.setBounds(420, 400, 100, 100);
-			play.setVisible(true);
+			//rules.setBounds(280, 400, 100, 100);
+			//rules.setVisible(true);
+			joinGame.setBounds(350, 400, 100, 100);
+			joinGame.setVisible(true);
 		} else if (screen == 4) {		//rules
 			
-			play.setVisible(false);
+			joinGame.setVisible(false);
 			rules.setVisible(false);
 			playAgain.setVisible(false);
 			
